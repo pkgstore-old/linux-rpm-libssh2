@@ -157,10 +157,10 @@ LC_ALL=en_US.UTF-8 make -C tests check
 - Switch to https:// upstream URLs
 - Full groff (not just groff-base) needed for the mansyntax check
 
-* Fri Mar 13 2020 Package Store <pkgstore@pm.me> - 1.9.0-101
+* Fri Mar 13 2020 Package Store <kitsune.solar@gmail.com> - 1.9.0-101
 - UPD: master-4d2768.
 
-* Wed Oct 16 2019 Package Store <pkgstore@pm.me> - 1.9.0-100
+* Wed Oct 16 2019 Package Store <kitsune.solar@gmail.com> - 1.9.0-100
 - UPD: MARKETPLACE.
 
 * Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.0-2
