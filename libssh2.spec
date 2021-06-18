@@ -1,18 +1,20 @@
-%global release_prefix          103
+%global release_prefix          104
 
 Name:                           libssh2
 Version:                        1.9.0
 Release:                        %{release_prefix}%{?dist}
 Summary:                        A library implementing the SSH2 protocol
 License:                        BSD
-URL:                            https://libssh2.org/
+URL:                            https://libssh2.org
+Vendor:                         Package Store <https://pkgstore.github.io>
+Packager:                       Kitsune Solar <kitsune.solar@gmail.com>
 
 Source0:                        https://libssh2.org/download/libssh2-%{version}.tar.gz
 
-# Signature
+# Signature.
 Source900:                      https://libssh2.org/download/libssh2-%{version}.tar.gz.asc
 
-# Fix integer overflow in SSH_MSG_DISCONNECT logic (CVE-2019-17498)
+# Fix integer overflow in SSH_MSG_DISCONNECT logic (CVE-2019-17498).
 Patch1:                         0001-libssh2-1.9.0-CVE-2019-17498.patch
 
 BuildRequires:                  coreutils
@@ -24,12 +26,12 @@ BuildRequires:                  sed
 BuildRequires:                  zlib-devel
 BuildRequires:                  /usr/bin/man
 
-# Test suite requirements
-# Full groff (not just groff-base) needed for the mansyntax check
+# Test suite requirements.
+# Full groff (not just groff-base) needed for the mansyntax check.
 BuildRequires:                  groff
-# We run the OpenSSH server and try to connect to it
+# We run the OpenSSH server and try to connect to it.
 BuildRequires:                  openssh-server
-# Need a valid locale to run the mansyntax check
+# Need a valid locale to run the mansyntax check.
 %if 0%{?fedora} > 23 || 0%{?rhel} > 7
 BuildRequires:                  glibc-langpack-en
 %endif
@@ -75,7 +77,7 @@ developing applications that use libssh2.
 %patch1 -p1
 
 # Replace hard wired port number in the test suite to avoid collisions
-# between 32-bit and 64-bit builds running on a single build-host
+# between 32-bit and 64-bit builds running on a single build-host.
 %{__sed} -i s/4711/47%{__isa_bits}/ tests/ssh2.{c,sh}
 
 
@@ -88,29 +90,29 @@ developing applications that use libssh2.
 %{make_install} INSTALL="install -p"
 find %{buildroot} -name '*.la' -delete
 
-# clean things up a bit for packaging
+# Clean things up a bit for packaging.
 %{__make} -C example clean
 %{__rm} -rf example/.deps
 find example/ -type f '(' -name '*.am' -o -name '*.in' ')' -delete
 
-# avoid multilib conflict on libssh2-devel
+# Avoid multilib conflict on "libssh2-devel".
 %{__mv} -v example example.%{_arch}
 
 
 %check
 echo "Running tests for %{_arch}"
 # The SSH test will fail if we don't have /dev/tty, as is the case in some
-# versions of mock (#672713)
+# versions of mock (#672713).
 if [[ ! -c /dev/tty ]]; then
   echo Skipping SSH test due to missing /dev/tty
   echo "exit 0" > tests/ssh2.sh
 fi
-# Apparently it fails in the sparc and arm buildsystems too
+# Apparently it fails in the sparc and arm buildsystems too.
 %ifarch %{sparc} %{arm}
 echo Skipping SSH test on sparc/arm
 echo "exit 0" > tests/ssh2.sh
 %endif
-# mansyntax check fails on PPC* and aarch64 with some strange locale error
+# Man syntax check fails on PPC* and aarch64 with some strange locale error.
 %ifarch ppc %{power64} aarch64
 echo "Skipping mansyntax test on PPC* and aarch64"
 echo "exit 0" > tests/mansyntax.sh
@@ -143,6 +145,9 @@ LC_ALL=en_US.UTF-8 make -C tests check
 
 
 %changelog
+* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 1.9.0-104
+- UPD: Add "Vendor" & "Packager" fields.
+
 * Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 1.9.0-103
 - UPD: New build for latest changes.
 
