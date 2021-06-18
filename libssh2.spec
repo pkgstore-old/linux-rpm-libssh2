@@ -1,4 +1,4 @@
-%global release_prefix          102
+%global release_prefix          103
 
 Name:                           libssh2
 Version:                        1.9.0
@@ -143,6 +143,9 @@ LC_ALL=en_US.UTF-8 make -C tests check
 
 
 %changelog
+* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 1.9.0-103
+- UPD: New build for latest changes.
+
 * Thu Jun 17 2021 Package Store <kitsune.solar@gmail.com> - 1.9.0-102
 - UPD: Move to GitHub.
 - UPD: License.
