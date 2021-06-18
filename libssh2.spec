@@ -157,11 +157,11 @@ LC_ALL=en_US.UTF-8 make -C tests check
 - Switch to https:// upstream URLs
 - Full groff (not just groff-base) needed for the mansyntax check
 
-* Fri Mar 13 2020 Package Store <kitsune.solar@gmail.com> - 1.9.0-101
-- UPD: master-4d2768.
+* Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
-* Wed Oct 16 2019 Package Store <kitsune.solar@gmail.com> - 1.9.0-100
-- UPD: MARKETPLACE.
+* Wed Oct 30 2019 Kamil Dudka <kdudka@redhat.com> - 1.9.0-3
+- Fix integer overflow in SSH_MSG_DISCONNECT logic (CVE-2019-17498)
 
 * Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
