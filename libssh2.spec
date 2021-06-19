@@ -10,7 +10,6 @@ Vendor:                         Package Store <https://pkgstore.github.io>
 Packager:                       Kitsune Solar <kitsune.solar@gmail.com>
 
 Source0:                        https://libssh2.org/download/libssh2-%{version}.tar.gz
-
 # Signature.
 Source900:                      https://libssh2.org/download/libssh2-%{version}.tar.gz.asc
 
