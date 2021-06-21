@@ -8,6 +8,7 @@
 
 ```
 $ dnf copr enable pkgstore/libssh2
+$ dnf install -y libssh2
 ```
 
 ### Open Build Service (OBS)
