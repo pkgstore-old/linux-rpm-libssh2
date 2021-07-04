@@ -7,7 +7,7 @@
 ### Fedora COPR
 
 ```
-$ dnf copr enable pkgstore/libssh2
+$ dnf copr enable pkgstore/lib
 $ dnf install -y libssh2
 ```
 
@@ -21,6 +21,13 @@ $ dnf install -y libssh2
 
 ```
 $ dnf upgrade -y libssh2
+```
+
+## Remove
+
+```
+$ dnf erase -y libssh2
+$ dnf copr remove pkgstore/lib
 ```
 
 ## How to Build
