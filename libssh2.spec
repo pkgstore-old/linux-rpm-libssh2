@@ -77,7 +77,7 @@ developing applications that use libssh2.
 # so we need to re-enable them as a workaround for the test
 # suite until upstream updates the tests.
 # See: https://github.com/libssh2/libssh2/issues/630
-%if 0%{?fedora} > 33 || 0%{?rhel} > 9
+%if 0%{?fedora} > 33 || 0%{?rhel} > 8
 %patch1
 %endif
 
