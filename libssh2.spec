@@ -1,4 +1,4 @@
-%global release_prefix          100
+%global release_prefix          1000
 
 Name:                           libssh2
 Version:                        1.10.0
@@ -6,14 +6,10 @@ Release:                        %{release_prefix}%{?dist}
 Summary:                        A library implementing the SSH2 protocol
 License:                        BSD
 URL:                            https://libssh2.org
-Vendor:                         Package Store <https://pkgstore.github.io>
-Packager:                       Kitsune Solar <kitsune.solar@gmail.com>
 
-Source0:                        https://libssh2.org/download/libssh2-%{version}.tar.gz
-# Signature.
-Source900:                      https://libssh2.org/download/libssh2-%{version}.tar.gz.asc
+Source0:                        %{name}-%{version}.tar.xz
 
-Patch1:                         libssh2-1.10.0-ssh-rsa-test.patch
+Patch1:                         %{name}-1.10.0-ssh-rsa-test.patch
 
 BuildRequires:                  coreutils
 BuildRequires:                  findutils
@@ -35,7 +31,7 @@ BuildRequires:                  glibc-langpack-en
 %endif
 
 %description
-libssh2 is a library implementing the SSH2 protocol as defined by
+%{name} is a library implementing the SSH2 protocol as defined by
 Internet Drafts: SECSH-TRANS(22), SECSH-USERAUTH(25),
 SECSH-CONNECTION(23), SECSH-ARCH(20), SECSH-FILEXFER(06)*,
 SECSH-DHGEX(04), and SECSH-NUMBERS(10).
@@ -45,26 +41,26 @@ SECSH-DHGEX(04), and SECSH-NUMBERS(10).
 # -------------------------------------------------------------------------------------------------------------------- #
 
 %package devel
-Summary:                        Development files for libssh2
+Summary:                        Development files for %{name}
 Requires:                       %{name}%{?_isa} = %{version}-%{release}
 Requires:                       pkgconfig
 
 %description devel
-The libssh2-devel package contains libraries and header files for
-developing applications that use libssh2.
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
 
 # -------------------------------------------------------------------------------------------------------------------- #
 # Package: docs
 # -------------------------------------------------------------------------------------------------------------------- #
 
 %package docs
-Summary:                        Documentation for libssh2
+Summary:                        Documentation for %{name}
 Requires:                       %{name} = %{version}-%{release}
 BuildArch:                      noarch
 
 %description docs
-The libssh2-docs package contains man pages and examples for
-developing applications that use libssh2.
+The %{name}-docs package contains man pages and examples for
+developing applications that use %{name}.
 
 # -------------------------------------------------------------------------------------------------------------------- #
 # -----------------------------------------------------< SCRIPT >----------------------------------------------------- #
@@ -107,7 +103,7 @@ find example/ -type f '(' -name '*.am' -o -name '*.in' ')' -delete
 %check
 LC_ALL=en_US.UTF-8 make -C tests check
 
-%ldconfig_scriptlets
+%{ldconfig_scriptlets}
 
 
 %files
@@ -132,7 +128,11 @@ LC_ALL=en_US.UTF-8 make -C tests check
 
 
 %changelog
-* Mon Mar 28 2022 Package Store <mail@z17.dev> - 1.10.0-100
+* Thu Mar 31 2022 Package Store <pkgstore@mail.ru> - 1.10.0-1000
+- UPD: Rebuild by Package Store.
+- UPD: File "mutt.spec".
+
+* Mon Mar 28 2022 Package Store <pkgstore@mail.ru> - 1.10.0-100
 - NEW: libssh2 v1.10.0.
 - UPD: Rebuild by Package Store.
 
@@ -198,16 +198,6 @@ LC_ALL=en_US.UTF-8 make -C tests check
 
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.0-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 1.9.0-104
-- UPD: Add "Vendor" & "Packager" fields.
-
-* Fri Jun 18 2021 Package Store <kitsune.solar@gmail.com> - 1.9.0-103
-- UPD: New build for latest changes.
-
-* Thu Jun 17 2021 Package Store <kitsune.solar@gmail.com> - 1.9.0-102
-- UPD: Move to GitHub.
-- UPD: License.
 
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.0-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
