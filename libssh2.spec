@@ -103,7 +103,7 @@ find example/ -type f '(' -name '*.am' -o -name '*.in' ')' -delete
 %check
 LC_ALL=en_US.UTF-8 make -C tests check
 
-%{ldconfig_scriptlets}
+%ldconfig_scriptlets
 
 
 %files
